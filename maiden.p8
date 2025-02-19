@@ -4,6 +4,7 @@ __lua__
 -- maiden
 -- a simple rpg
 
+t = 0
 th = 64 -- text/upper half
 oh = 66 -- option/lower half
 
@@ -64,9 +65,9 @@ function enter_capitol()
 	else
 	 add(text_buff, "the gates creak open!")
 	 actions = {
-	 	{label="find new quests", func=find_quests},
-	 	{label="visit market", func=open_market},
-	 	{label="leave", func=exit_location}
+	 	action_list[1],
+	 	action_list[2],
+	 	action_list[3]
 	 }
 	end
 	page_i = 1
@@ -79,6 +80,7 @@ function _draw()
 end
 
 function _update()
+ t += 1
 	if game_state== "text_scroll" then
 	 handle_text_input()
  elseif game_state == "choose_action" then
@@ -118,6 +120,20 @@ function handle_action_selected()
 	
 end
 
+function handle_text_input()
+	
+end
+-->8
+-- action list
+
+function add_action(_l,_f)
+	add(action_list,{label=_l,func=_f})
+end
+
+action_list = {}
+
+add_action("find new quests",find_quests)
+add_action("visit market",open_market)
 
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
