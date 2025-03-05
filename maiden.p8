@@ -121,7 +121,7 @@ function handle_action_selected()
 end
 
 function handle_text_input()
-	
+	if
 end
 -->8
 -- action list

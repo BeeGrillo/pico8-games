@@ -1,5 +1,19 @@
 # Maiden Quest
 
+## Party
+
+The main character starts the quest alone, but she may acquire new companions to help her during the many perils she may face.
+
+### Attributes
+
+- __Combat:__ used when facing a foe. Roll two die and sum the combat value.
+- __Vitality:__ used to bypass some challenges, to resist to damage and to determinate maximum health points.
+- __Health Points:__ How much pain the character can take before falling.
+- __Reputation:__ Increase each time a quest is completed, and when defeating some enemies.
+- __Money:__ How many coins the party has.
+- __Inventory:__ A list of items belonging to the party. Each item has its own rules, but they may be of two tipes: consumable and permanent.
+- __Companions:__ Each companion will help in a very specific way. Some will help in combat, others will heal the maiden, or provide a way to interact with the world in a specific way.
+
 ## Places
 
 ### Capitol
@@ -16,7 +30,7 @@
 
 He only  talks to the maiden if she has a specific reputation score or greater (value?). Nobody refers him by his real name.
 
-### Guild Master Ketil
+### Guild Master Ketil (caldeirão)
 
 He is passionate about exploration, but rarely travels now due to the road perils. From time to time, might need help to go from a place to another.
 
@@ -39,6 +53,18 @@ From the realms above, the winter is usualy a nice time for viking. So Vidar tra
 - Huntress __Nanna__ (daring, brave)
 - Huntress wife __Eidunn__ (Happiness, gift)
 - Orphan __Torny__ (new)
+
+## Story
+
+Each game scene is made of the story text and a list of actions available.
+
+The actions may be hidden if a specific requirement is not met. those are:
+
+- Have an item in the inventory
+- Have finished a specific quest
+- Have finished a minimum number of quests
+- Have a minimum amount of money
+- Have a specific companion in the party
 
 ## Quests
 1. Get __x items__, take to __destination__
