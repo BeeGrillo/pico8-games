@@ -22,25 +22,25 @@ kaijus = {
 	{"shin-ennaru kyoufu",4,50,3000}
 }
 hp = {
-	{15,7,4,19},
-	{27,7,4,19},
-	{39,7,4,19},
-	{51,12,5,1},
-	{63,7,8,4},
-	{75,7,8,4},
-	{87,7,8,4},
-	{-1,24,11,5},
-	{11,24,11,5},
-	{23,24,11,5},
-	{82,27,13,8},
-	{94,27,13,8},
-	{-1,57,16,11},
-	{11,57,16,11},
-	{23,57,16,11},
-	{74,57,19,13},
-	{86,57,19,13},
-	{98,57,19,13},
-	{14,84,1,16}	
+	{false,15,7,{sub1}},
+	{false,27,{add1,sub1}},
+	{false,39,7,{add1}},
+	{false,51,12,{eq1}},
+	{false,63,7,{sub1}},
+	{false,75,7,{add1,lt}},
+	{false,87,7,{gt}},
+	{false,-1,24,{neqn}},
+	{false,11,24,{neql,neqn}},
+	{false,23,24,{neql}},
+	{false,82,27,{eqn}},
+	{false,94,27,{eql}},
+	{false,-1,57,{lt}},
+	{false,11,57,{gt,eqn}},
+	{false,23,57,{eql}},
+	{false,74,57,{lt}},
+	{false,86,57,{gt,eqn}},
+	{false,98,57,{eql}},
+	{false,14,84,{}}	
 }
 
 
@@ -80,13 +80,9 @@ function i_intro()
 		ma= 0
 	}
 	--damage
-	hh={false}
-	hra={false,false,false}
-	hla={false,false,false}
-	hub={false,false,false}
-	hlb={false,false}
-	hrl={false,false,false}
-	hll={false,false,false}
+	for hpp in all(hp) do
+		hpp[1] = false
+	end
 end
 
 function i_briefing()
@@ -211,124 +207,52 @@ function d_dmg_panel(x,y)
 	spr(37,59+x,58+y,2,2,true)
 	-- die
 	-- right arm
-	if hra[1] then
-		spr(hra[1],17+x,y)
-	else
-		spr(48,17+x,y)
-	end
-	if hra[2] then
-	 spr(hra[2],29+x,y)
-	else
-	 spr(48,29+x,y)
-	end
-	if hra[3] then
-	 spr(h.t.ra[3],41+x,y)
-	else
-	 spr(48,41+x,y)
-	end
+	d_die(hp[1][1],17+x,y)
+	d_die(hp[2][1],29+x,y)
+	d_die(hp[3][1],41+x,y)
 	spr(10,23+x,y)
 	spr(10,35+x,y)
 	line(16+x,9+y,49+x,9+y,7)
 	line(49+x,10+y,40+x,24+y,7)
 	-- head
-	if hh[1] then
-	 spr(hh[1],53+x,5+y)
-	else
-		spr(48,53+x,5+y)
-	end
+	d_die(hp[4][1],53+x,5+y)
 	spr(11,53+x,y)
 	line(52+x,14+y,61+x,14+y,7)
 	line(57+x,15+y,56+x,16+y,7)
 	-- left arm
-	if hla[1] then
-		spr(hla[1],65+x,y)
-	else 
-	 spr(48,65+x,y)	
-	end
-	if hla[2] then
-	 spr(hla[2],77+x,y)
-	else
-		spr(48,77+x,y)
-	end
-	if hla[3] then
-	 spr(hla[3],89+x,y)
-	else
-		spr(48,89+x,y)	
-	end
+	d_die(hp[5][1],65+x,y)
+	d_die(hp[6][1],77+x,y)
+	d_die(hp[7][1],89+x,y)
 	spr(10,71+x,y)
 	spr(9,83+x,y)
 	line(64+x,9+y,97+x,9+y,7)
 	line(80+x,10+y,75+x,24+y,7)
 	-- upper body
-	if hub[1] then
-	 spr(hub[1],1+x,17+y)
-	else
-	 spr(48,1+x,16+y)
-	end 
-	if hub[2] then
-	 spr(hub[2],13+x,17+y)
-	else
-	 spr(48,13+x,16+y)
-	end
-	if hub[3] then
-	 spr(hub[3],25+x,17+y)
-	else
-	 spr(48,25+x,16+y)
-	end
+	d_die(hp[8][1],1+x,17+y)
+	d_die(hp[9][1],13+x,17+y)
+	d_die(hp[10][1],25+x,17+y)
 	spr(8,19+x,16+y)
 	spr(8,7+x,16+y)
 	line(x,25+y,34+x,25+y,7)
 	line(17+x,26+y,50+x,36+y,7)
 	-- lower body
-	if hlb[1] then
-	 spr(hlb[1],84+x,20+y)
-	else
-	 spr(48,84+x,20+y)
-	end
-	if hlb[2] then
-	 spr(hlb[2],96+x,20+y)
-	else
-	 spr(48,96+x,20+y)
- end
+	d_die(hp[11][1],84+x,20+y)
+	d_die(hp[12][1],96+x,20+y)
  spr(7,90+x,20+y)
 	line(83+x,29+y,104+x,29+y,7)
 	line(92+x,30+y,60+x,44+y,7)
 	-- right leg
-	if hrl[1] then
-	 spr(hrl[1],1+x,50+y)
-	else
-		spr(48,1+x,50+y)
-	end
-	if hrl[2] then
-	 spr(hrl[2],13+x,50+y)
-	else
-	 spr(48,13+x,50+y)
-	end
-	if hrl[3] then
-	 spr(hrl[3],25+x,50+y)
-	else
-		spr(48,25+x,50+y)
-	end
+	d_die(hp[13][1],1+x,50+y)
+	d_die(hp[14][1],13+x,50+y)
+	d_die(hp[15][1],25+x,50+y)
 	spr(9,7+x,50+y)
 	spr(7,19+x,50+y)
 	line(x,59+y,33+x,59+y)
 	line(16+x,60+y,39+x,67+y)
 	-- left leg
- if hll[1] then
-	 spr(hll[1],76+x,50+y)
-	else
-	 spr(48,76+x,50+y)
-	end
-	if hll[2] then
-	 spr(hll[2],88+x,50+y)
-	else
-		spr(48,88+x,50+y)
-	end
-	if hll[3] then
-	 spr(hll[3],100+x,50+y)
-	else
-		spr(48,100+x,50+y)
-	end
+	d_die(hp[16][1],76+x,50+y)
+	d_die(hp[17][1],88+x,50+y)
+	d_die(hp[18][1],100+x,50+y)
 	spr(9,82+x,50+y)
 	spr(7,94+x,50+y)
 	line(75+x,59+y,108+x,59+y)
@@ -356,6 +280,21 @@ function d_dmg_panel(x,y)
 	if t%5 ~= 0 then
 		spr(52,hp[c][1],hp[c][2])
 	end
+end
+
+function d_die(val,x,y)
+	if val then
+		spr(val,x,y)
+	else
+	 spr(48,x,y)
+	end
+end
+
+function d_attack_roll()
+	
+end
+function d_damage_roll()
+	
 end
 function d_cockpit(x,y)
 	
@@ -422,74 +361,27 @@ function u_prelevel()
 end
 
 function u_level()
+ 
+
+ local die = d[#d]
 	if h.l <= 0 or k.l <= 0 then
 		i_poslevel()
 	end
-	if btnp(⬅️) then
-	 if c <= 1 then
-	 	c = 19
-  else
-  	c = c - 1
-  end
-	elseif btnp(➡️) then
-	 if c >= 19 then
-	  c = 1
-	 else
-	  c = c + 1
-	 end
-	elseif btnp(⬆️) then
-	 c = hp[c][4]
-	elseif btnp(⬇️) then
-		c = hp[c][3]
+	if btnp(⬅️) or btnp(⬆️) then
+  c = find_next(c,die,false)
+	elseif btnp(➡️) or btnp(⬇️) then
+	 c = find_next(c,die,true)
 	elseif btnp(🅾️) or btnp(❎) then
-	 local die = d[#d]
-		if c == 1 then
-		 if hra[1] then
-		  print("can't allocate die here")
-		 else
-		 	-- inserir regras
-   end
-		elseif c == 2 then
-		 if hra[2] then
-		  print("can't allocate die here")	
-		 else
-		  -- inserir regras
-   end
-		elseif c == 3 then
-		
-		elseif c == 4 then
-		
-		elseif c == 5 then
-		
-		elseif c == 6 then
-		
-		elseif c == 7 then
-		
-		elseif c == 8 then
-		
-		elseif c == 9 then
-		
-		elseif c == 10 then
-		
-		elseif c == 11 then
-		
-		elseif c == 12 then
-		
-		elseif c == 13 then
-		
-		elseif c == 14 then
-		
-		elseif c == 15 then
-		
-		elseif c == 16 then
-		
-		elseif c == 17 then
-		
-		elseif c == 18 then
-		
-		elseif c == 19 then
-		
-		end
+	 local valid = true
+	 for fn in all(hp[c][4]) do
+	 	valid = valid and fn(c,die)
+  end
+  if valid then
+  	hp[c][1] = die
+  	deli(d,#d)
+  else
+   print("invalid position")
+  end
 	end
 end
 
@@ -509,6 +401,17 @@ function u_gameover()
 	end
 end
 
+function find_next(pos,die,reverse)
+ local step,ini,fim = 1,pos+1,pos+18
+	if (reverse) step = -1,pos+18,pos+1
+	for i=ini,fim,step do
+	 local cn = i%19 
+	 if cn>0 and not hp[cn][1] then
+	 	return cn
+  end 
+	end
+	return 19
+end
 __gfx__
 00000000077777700777777007777770077777700777777007777770000000000000200000a0000000000900000008002265555ddddddddd1111111100000000
 0000000077777776777771167777711671177116711771167117711600333300002272000a7aa00000909790088887808865555dddd111115555555500000000
