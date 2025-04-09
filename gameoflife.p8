@@ -6,9 +6,10 @@ grid = {}
 t=0
 
 function _init()
-	for i=1,128 do
+ poke(0x5f2c, 3)
+	for i=1,64 do
 	 grid[i] = {}
-		for j=1,128 do
+		for j=1,64 do
 			grid[i][j] = flr(rnd(2))
 		end
 	end
@@ -18,8 +19,8 @@ function _init()
 end
 
 function draw()
- for i=1,128 do
-		for j=1,128 do
+ for i=1,64 do
+		for j=1,64 do
 			pset(i-1,j-1,grid[i][j]*9)
 		end
 	end
@@ -27,8 +28,8 @@ end
 
 function update()
 	if t%2 == 0 then
-		for i=1,128 do
-			for j=1,128 do
+		for i=1,64 do
+			for j=1,64 do
 				result(i,j)
 			end
 		end
@@ -41,7 +42,7 @@ function result(x,y)
  
  for i = -1,1 do
  	for j = -1,1 do
- 		if x>1 and y>1 and x<128 and y<128 then
+ 		if x>1 and y>1 and x<64 and y<64 then
  		 if i == 0 and j == 0 then
  		 	
     else
