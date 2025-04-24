@@ -100,13 +100,13 @@ function dr_title()
 	for i=0,6 do
 	 --	spr(34,4+(i*16),45,2,1)
 			spr(34,4+(i*16),53,2,1)
- end
+    end
 	spr(34,116,53)
- spr(16,80,26,2,2)
- spr(16,96,26,2,2,true)
- spr(20,22,18,5,1)
- spr(36,32,28,5,1)
- spr(9,6,29,4,4)
+	spr(16,80,26,2,2)
+	spr(16,96,26,2,2,true)
+	spr(20,22,18,5,1)
+	spr(36,32,28,5,1)
+	spr(9,6,29,4,4)
 end
 
 function title_actions()
@@ -123,6 +123,7 @@ end
 function handle_text_input()
 	if
 end
+
 -->8
 -- action list
 
@@ -134,6 +135,30 @@ action_list = {}
 
 add_action("find new quests",find_quests)
 add_action("visit market",open_market)
+add_action("leave citadel",leave_citadel)
+add_action("request audience with the mayor",call_mayor)
+add_action("meet the village elder asa",meet_asa)
+add_action("meet the village elder magni",meet_magni)
+add_action("visit pub",go_to_pub)
+add_action("talk to owner",meet_bodil)
+add_action("talk to owner's wife",meet_trygve)
+add_action("talk to owner's son",meet_ebbe)
+add_action("talk to drunks",meet_drunks)
+add_action("order a drink",order_drink)
+add_action("talk gossip",talk_gossip)
+add_action("leave pub",leave_pub)
+add_action("talk to guards",meet_olaf)
+add_action("enter village",enter_village)
+add_action("leave village",leave_village)
+add_action("enter forest",enter_forest)
+add_action("leave forest",leave_forest)
+add_action("talk to hunter",talk_ivor)
+add_action("talk to huntress",talk_nanna)
+add_action("talk to huntress' wife",talk_eidunn)
+add_action("talk to orphan",talk_torny)
+add_action("enter building",enter_building)
+add_action("face enemy",fight)
+add_action("face enemies",fight)
 
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
